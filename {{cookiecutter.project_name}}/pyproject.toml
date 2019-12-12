@@ -20,61 +20,31 @@ pytest = "*"
 pytest-check = "*"
 pytest-cov = "*"
 pytest-mock = "*"
+mypy = "*"
 safety = "*"
 tox = "*"
 typing = "*"
 vulture = "*"
+yapf = "*"
 
 [tool.isort]
 line_length = 88
-indent = '    '
-skip = [
-    ".tox",
-    "build",
-    "dist"
-]
-known_standard_library = [
-    "StringIO"
-]
-known_test = [
-    "pytest"
-]
-known_first_party = [
-    "{{cookiecutter.project_name}}"
-]
+known_standard_library = ["StringIO"]
+known_test = ["pytest"]
+known_first_party = ["{{cookiecutter.project_name}}"]
 multi_line_output = 3
+use_parentheses = true
+combine_as_imports = true
 
+# https://mypy.readthedocs.io/en/latest/config_file.html
 [tool.mypy]
+ignore_missing_imports = true
 check_untyped_defs = true
-disallow_untyped_defs = true
 follow_imports = "normal"
-ignore_errors = false
-ignore_missing_imports = true
-no_implicit_optional = true
-strict_optional = true
-show_column_numbers = true
-warn_no_return = true
-warn_unused_configs = true
-warn_unused_ignores = true
-warn_redundant_casts = true
-
-[mypy-pytest."*"]
-ignore_missing_imports = true
-
-[mypy-parser."*"]
-ignore_missing_imports = true
+show_error_codes = true
+pretty = true
 
 [tool.pytest]
-addopts = "-rw"
-norecursedirs = [
-    ".git",
-    ".*",
-    "*.egg*",
-    "old",
-    "docs",
-    "dist",
-    "build"
-]
 bdd_features_base_dir = "tests/features/"
 testpaths = ["tests"]
 filterwarnings = [
