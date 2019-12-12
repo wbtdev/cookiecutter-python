@@ -1,0 +1,26 @@
+version: "2"
+checks:
+  argument-count:
+    config:
+      threshold: 12
+  complex-logic:
+    config:
+      threshold: 12
+  similar-code:
+    config:
+      threshold: 42
+  identical-code:
+    config:
+      threshold: 42
+
+plugins:
+  bandit:
+    enabled: true
+  editorconfig:
+    enabled: true
+
+exclude_patterns:
+  - ".tox/"
+  - "dist/"
+  - "scripts/"
+  - "tests/"
